@@ -4,10 +4,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GitSearchService } from './git-search.service';
+import { GitCodeSearchService } from './git-code-search.service';
+import { UnifiedSearchService } from './unified-search.service';
 import { GitSearchComponent } from './git-search/git-search.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { NoSpecialCharsDirective } from './no-special-chars.directive';
+import { RepositoryDisplayComponent } from './repository-display/repository-display.component';
+import { CodeDisplayComponent } from './code-display/code-display.component';
+import { FadeDirective } from './fade.directive';
 
 const appRoutes: Routes = [
   { path: '',
@@ -31,6 +37,10 @@ const appRoutes: Routes = [
     GitSearchComponent,
     HomePageComponent,
     NotFoundComponent,
+    NoSpecialCharsDirective,
+    RepositoryDisplayComponent,
+    CodeDisplayComponent,
+    FadeDirective,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +51,7 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [GitSearchService],
+  providers: [GitSearchService, GitCodeSearchService, UnifiedSearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,9 @@
-<h3>{{title}} - {{displayQuery}}</h3>
-<form (ngSubmit)="sendQuery()">
+<h3>{{title}} (Reactive) - {{displayQuery}}</h3>
+<form (ngSubmit)="sendQuery()" [formGroup]="form">
   <div *ngFor="let key of modelKeys">
-      {{key}} <input name="{{key}}" placeholder="Enter {{key}} Here" [(ngModel)]="model[key]"/>
+      {{key}} <input name="{{key}}" placeholder="Enter {{key}} Here" formControlName={{key}}/>
   </div>
-  <button type="Submit">Submit</button>
+  <button type="Submit" [disabled]="!form.valid">Submit</button>
 </form>
 
 <div *ngIf="searchResults; else elseBlock">
